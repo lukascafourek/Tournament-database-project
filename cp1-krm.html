@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Relační model databáze turnaje v počítačové hře</title>
+	<style>
+		.tab {
+			margin-left: 40px;
+		}
+		.underlineLight {
+			border-bottom: 1px solid black;
+			position: relative;
+		}
+		.underline {
+			border-bottom: 2px solid black;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<h1>Relační model databáze turnaje v počítačové hře</h1>
+
+	<p><b>Turnaj</b>(<span class="underline">nazev</span>, mesto, zeme, datum_konani)</p>
+
+	<p><b>Organizator</b>(<span class="underline">nazev_turnaje, organizator</span>)</p>
+	<p class="tab">FK: (nazev_turnaje) ⊆ Turnaj(nazev)</p>
+
+	<p><b>Cena</b>(<span class="underlineLight">nazev, datum_udeleni</span>, typ, nazev_turnaje, <span class="underline">nazev_tymu</span>)</p>
+	<p class="tab">FK: (nazev_turnaje) ⊆ Turnaj(nazev)</p>
+	<p class="tab">FK: (nazev_tymu) ⊆ Tym(nazev)</p>
+
+	<p><b>Zapas</b>(<span class="underlineLight">mapa, tym_A, tym_B, datum_konani</span>, vitezny_tym, delka, nazev_turnaje)</p>
+	<p class="tab">FK: (nazev_turnaje) ⊆ Turnaj(nazev)</p>
+
+	<p><b>Tym</b>(<span class="underline">nazev</span>, zeme_puvodu, datum_vzniku, hodnoceni)</p>
+	
+	<p><b>Se_ucastni</b>(<span class="underline">nazev_turnaje, nazev_tymu</span>)</p>
+	<p class="tab">FK: (nazev_turnaje) ⊆ Turnaj(nazev)</p>
+	<p class="tab">FK: (nazev_tymu) ⊆ Tym(nazev)</p>
+
+	<p><b>Souperi_v</b>(<span class="underline">mapa_zapasu, tym_A_zapasu, tym_B_zapasu, datum_konani_zapasu, nazev_tymu</span>)</p>
+	<p class="tab">FK: (mapa_zapasu, tym_A_zapasu, tym_B_zapasu, datum_konani_zapasu) ⊆ Zapas(mapa, tym_A, tym_B, datum_konani)</p>
+	<p class="tab">FK: (nazev_tymu) ⊆ Tym(nazev)</p>
+
+	<p><b>Kolo</b>(<span class="underline">cislo, mapa_zapasu, tym_A_zapasu, tym_B_zapasu, datum_konani_zapasu</span>, vitezny_tym, nejlepsi_hrac, minuty, sekundy)</p>
+	<p class="tab">FK: (mapa_zapasu, tym_A_zapasu, tym_B_zapasu, datum_konani_zapasu) ⊆ Zapas(mapa, tym_A, tym_B, datum_konani)</p>
+
+	<p><b>Profesional</b>(<span class="underline">cislo_smlouvy</span>, <span class="underlineLight">jmeno, prezdivka_ve_hre</span>, datum_narozeni, zeme_puvodu, clenem_od, nazev_tymu)</p>
+	<p class="tab">FK: (nazev_tymu) ⊆ Tym(nazev)</p>
+
+	<p><b>Hrac</b>(<span class="underline">cislo_smlouvy</span>, hodnoceni, trener)</p>
+	<p class="tab">FK: (cislo_smlouvy) ⊆ Profesional(cislo_smlouvy)</p>
+	<p class="tab">FK: (trener) ⊆ Trener(cislo_smlouvy)</p>
+
+	<p><b>Strategie</b>(<span class="underline">hrac, strategie</span>)</p>
+	<p class="tab">FK: (hrac) ⊆ Hrac(cislo_smlouvy)</p>
+
+	<p><b>Je_spoluhracem</b>(<span class="underline">hrac, spoluhrac</span>)</p>
+	<p class="tab">FK: (hrac) ⊆ Hrac(cislo_smlouvy)</p>
+	<p class="tab">FK: (spoluhrac) ⊆ Hrac(cislo_smlouvy)</p>
+
+	<p><b>Hraje</b>(<span class="underline">hrac, cislo_kola, mapa_zapasu, tym_A_zapasu, tym_B_zapasu, datum_konani_zapasu</span>)</p>
+	<p class="tab">FK: (hrac) ⊆ Hrac(cislo_smlouvy))</p>
+	<p class="tab">FK: (cislo_kola, mapa_zapasu, tym_A_zapasu, tym_B_zapasu, datum_konani_zapasu) ⊆ Kolo(cislo, mapa_zapasu, tym_A_zapasu, tym_B_zapasu, datum_konani_zapasu)</p>
+
+	<p><b>Trener</b>(<span class="underline">cislo_smlouvy</span>, zkusenosti_od)</p>
+	<p class="tab">FK: (cislo_smlouvy) ⊆ Profesional(cislo_smlouvy))</p>
+
+	<p><b>Specializace</b>(<span class="underline">trener, specializace</span>)</p>
+	<p class="tab">FK: (trener) ⊆ Trener(cislo_smlouvy)</p>
+</body>
+</html>

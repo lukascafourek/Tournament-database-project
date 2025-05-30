@@ -1,0 +1,48 @@
+Turnaj(název, město, země, datum_konání)
+
+Organizátor(název_turnaje, organizátor)
+FK: (název_turnaje) ⊆ Turnaj(název)
+
+Cena(název, datum_udělení, typ, název_turnaje, název_týmu)
+FK: (název_turnaje) ⊆ Turnaj(název)
+FK: (název_týmu) ⊆ Tým(název)
+
+Zápas(mapa, tým_A, tým_B, datum_konání, vítězný_tým, délka, název_turnaje)
+FK: (název_turnaje) ⊆ Turnaj(název)
+
+Tým(název, země_původu, datum_vzniku, hodnocení)
+
+Se_účastní(název_turnaje, název_týmu)
+FK: (název_turnaje) ⊆ Turnaj(název)
+FK: (název_týmu) ⊆ Tým(název)
+
+Soupeří_v(mapa_zápasu, tým_A_zápasu, tým_B_zápasu, datum_konání_zápasu, název_týmu)
+FK: (mapa_zápasu, tým_A_zápasu, tým_B_zápasu, datum_konání_zápasu) ⊆ Zápas(mapa, tým_A, tým_B, datum_konání)
+FK: (název_týmu) ⊆ Tým(název)
+
+Kolo(číslo, mapa_zápasu, tým_A_zápasu, tým_B_zápasu, datum_konání_zápasu, vítězný_tým, nejlepší_hráč, minuty, sekundy)
+FK: (mapa_zápasu, tým_A_zápasu, tým_B_zápasu, datum_konání_zápasu) ⊆ Zápas(mapa, tým_A, tým_B, datum_konání)
+
+Profesionál(číslo_smlouvy, jméno, přezdívka_ve_hře, datum_narození, země_původu, členem_od, název_týmu)
+FK: (název_týmu) ⊆ Tým(název)
+
+Hráč(číslo_smlouvy, hodnocení, trenér)
+FK: (číslo_smlouvy) ⊆ Profesionál(číslo_smlouvy)
+FK: (trenér) ⊆ Trenér(číslo_smlouvy)
+
+Strategie(hráč, strategie)
+FK: (hráč) ⊆ Hráč(číslo_smlouvy)
+
+Je_spoluhráčem(hráč, spoluhráč)
+FK: (hráč) ⊆ Hráč(číslo_smlouvy)
+FK: (spoluhráč) ⊆ Hráč(číslo_smlouvy)
+
+Hraje(hráč, číslo_kola, mapa_zápasu, tým_A_zápasu, tým_B_zápasu, datum_konání_zápasu)
+FK: (hráč) ⊆ Hráč(číslo_smlouvy)
+FK: (číslo_kola, mapa_zápasu, tým_A_zápasu, tým_B_zápasu, datum_konání_zápasu) ⊆ Kolo(číslo, mapa_zápasu, tým_A_zápasu, tým_B_zápasu, datum_konání_zápasu)
+
+Trenér(číslo_smlouvy, zkušenosti_od)
+FK: (číslo_smlouvy) ⊆ Profesionál(číslo_smlouvy)
+
+Specializace(trenér, specializace)
+FK: (trenér) ⊆ Trenér(číslo_smlouvy)

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+    <persistence-unit name="ApplicationPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>cz.cvut.fel.dbs.tables.Cena</class>
+        <class>cz.cvut.fel.dbs.tables.Hrac</class>
+        <class>cz.cvut.fel.dbs.tables.Hraje</class>
+        <class>cz.cvut.fel.dbs.tables.HrajeId</class>
+        <class>cz.cvut.fel.dbs.tables.JeSpoluhracem</class>
+        <class>cz.cvut.fel.dbs.tables.JeSpoluhracemId</class>
+        <class>cz.cvut.fel.dbs.tables.Kolo</class>
+        <class>cz.cvut.fel.dbs.tables.Organizator</class>
+        <class>cz.cvut.fel.dbs.tables.OrganizatorId</class>
+        <class>cz.cvut.fel.dbs.tables.Profesional</class>
+        <class>cz.cvut.fel.dbs.tables.SeUcastni</class>
+        <class>cz.cvut.fel.dbs.tables.SeUcastniId</class>
+        <class>cz.cvut.fel.dbs.tables.SouperiV</class>
+        <class>cz.cvut.fel.dbs.tables.SouperiVId</class>
+        <class>cz.cvut.fel.dbs.tables.Specializace</class>
+        <class>cz.cvut.fel.dbs.tables.Strategie</class>
+        <class>cz.cvut.fel.dbs.tables.Trener</class>
+        <class>cz.cvut.fel.dbs.tables.Turnaj</class>
+        <class>cz.cvut.fel.dbs.tables.Tym</class>
+        <class>cz.cvut.fel.dbs.tables.Zapas</class>
+        <properties>
+            <property
+                    name="jakarta.persistence.jdbc.url"
+                    value="jdbc:postgresql://slon.felk.cvut.cz:5432/cafoulu1"/>
+            <property
+                    name="jakarta.persistence.jdbc.user"
+                    value="cafoulu1"/>
+            <property
+                    name="jakarta.persistence.jdbc.driver"
+                    value="org.postgresql.Driver"/>
+            <property
+                    name="jakarta.persistence.jdbc.password"
+                    value="1/Popokatepetl"/>
+            <property
+                    name="jakarta.persistence.schema-generation.database.action"
+                    value="create"/>
+        </properties>
+    </persistence-unit>
+</persistence>

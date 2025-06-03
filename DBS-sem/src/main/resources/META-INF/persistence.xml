@@ -28,16 +28,16 @@
         <properties>
             <property
                     name="jakarta.persistence.jdbc.url"
-                    value="jdbc:postgresql://slon.felk.cvut.cz:5432/cafoulu1"/>
+                    value="jdbc:postgresql://slon.felk.cvut.cz:5432/postgres"/>
             <property
                     name="jakarta.persistence.jdbc.user"
-                    value="cafoulu1"/>
+                    value="postgres"/>
             <property
                     name="jakarta.persistence.jdbc.driver"
                     value="org.postgresql.Driver"/>
             <property
                     name="jakarta.persistence.jdbc.password"
-                    value="1/Popokatepetl"/>
+                    value="postgres"/>
             <property
                     name="jakarta.persistence.schema-generation.database.action"
                     value="create"/>
